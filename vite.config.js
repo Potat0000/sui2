@@ -86,11 +86,16 @@ export default defineConfig({
           return svg
         },
         domain: (url) => {
+          var domain_replace = data['domain_replace'] || {}
           var o = new URL(url);
-          if (o.port) {
-            return `${o.hostname}:${o.port}`
+          var hostname = o.hostname
+          for (let k in domain_replace) {
+            hostname = hostname.replace(RegExp(k, "ig"), domain_replace[k])
           }
-          return o.hostname
+          if (o.port) {
+            return `${hostname}:${o.port}`
+          }
+          return hostname
         }
       }
     }),

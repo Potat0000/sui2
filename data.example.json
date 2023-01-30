@@ -1,6 +1,7 @@
 {
   "title": "SUI2",
   "description": "a startpage for your server and / or new tab page",
+  "domain_replace": { "\\.example\\.com$": ".example" },
   "apps" : [
     {
       "name": "Cloud",
